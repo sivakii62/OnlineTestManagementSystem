@@ -1,0 +1,96 @@
+
+    <nav class="navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow" style="background-color: #76618b;">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/admin" style="background-color: #524361;">
+            <i class="fas fa-shopping-cart"></i> &nbsp;OnlineTest Admin
+        </a>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item">
+                <span class="text-white">Admin &nbsp;<i class="fa fa-user" aria-hidden="true"></i></span>
+            </li>
+        </ul>
+      </nav>
+      
+      <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item main">
+                            <a class="nav-link" routerLink="/admin/home">
+                                <i class="fas fa-home"></i>&nbsp; Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item main">
+                            <a class="nav-link main"  routerLink="/admin/testList" role="button">
+                                &nbsp; Test
+                            </a>
+                            <span>
+                                <a class="nav-link main ml-4" routerLink="/admin/addTest">
+                                    - &nbsp;Add A Test
+                                </a>
+                                <a class="nav-link main ml-4" routerLink="/admin/testList">
+                                    - &nbsp;Update A Test
+                                </a>
+                            </span>
+                        </li>
+                        <li class="nav-item main">
+                            <a class="nav-link main" routerLink="/admin/questionList" role="button">
+                                &nbsp; Question
+      
+                            </a>
+                            <span>
+                                <a class="nav-link main ml-4" routerLink="/admin/addQuestion">
+                                    - Add Question
+                                </a>
+                                <a class="nav-link main ml-4" routerLink="/admin/questionList">
+                                    - Update Question
+                                </a>
+                            </span>
+                        </li>
+      
+                        <li class="nav-item main">
+                            <a class="nav-link main" routerLink="/admin/assignTest" >
+                                &nbsp; Assign Test
+                            </a>
+                        </li>
+      
+                        <li class="nav-item main">
+                            <a class="nav-link main" routerLink="/admin/topPerformers">
+                                &nbsp; Top Performers
+                            </a>
+      
+                        </li>
+                        <!-- <li class="nav-item main">
+                            <a class="nav-link main" routerLink="/admin/topPerformersOfTest">
+                                &nbsp; Top Performers Of Test
+                            </a>
+      
+                        </li> -->
+                        <li class="nav-item main">
+                            <a class="nav-link" routerLink="/admin/declareResult">
+                                &nbsp; Declare Test Result
+                            </a>
+                        </li>
+                        <li class="nav-item main">
+                            <a class="nav-link" (click)="logOut()">
+                               &nbsp; Log Out
+                            </a>
+                        </li>
+                        <br>
+                        <br>
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <p><i class="fas fa-calendar-alt"></i> &nbsp;{{todaysDate | date}}</p>
+                                <p><i class="fas fa-clock"></i> &nbsp;{{todaysDate | date:'h:mm:ss a'}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+      
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <router-outlet></router-outlet>
+            </main>
+        </div>
+      </div>
+      

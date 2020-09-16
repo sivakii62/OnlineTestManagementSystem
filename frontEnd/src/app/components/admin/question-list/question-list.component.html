@@ -1,0 +1,50 @@
+<br /><br />
+
+
+
+<div class="offset-lg-1 col-lg-9 col-md-9">
+    <h2>All Questions</h2>
+
+    <!-- table for displaying all the available questions-->
+    <table class="table table-striped table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Question</th>
+                <th>Marks</th>
+                <th>Category</th>
+                <th>Test Assigned</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- looping through the questions and displaying details-->
+            <tr *ngFor="let que of allQues ">
+                <td>{{que.questionId}}</td>
+                <td style="width: 30%;">{{que.questionTitle}}</td>
+                <td>{{que.questionMarks}}</td>
+                <td>{{que.questionCategory.name}}</td>
+                <td *ngIf="que.testQuestions!=null">{{que.testQuestions?.testTitle}}</td>
+                <td *ngIf="que.testQuestions==null" >--</td>                
+                <td>
+                    <button class="btn btn-outline-warning" type="button"
+                        (click)="updateQuestion(que.questionId)">Update</button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-danger" type="button"
+                        (click)="deleteQuestion(que.questionId)">Delete</button>
+                </td>
+            </tr>
+
+            <!-- message if no questions are available-->
+            <tr>
+                <td *ngIf="allQues?.length==0" colspan="7">
+                    <h5 class="text-center text-danger">
+                    Sorry, No Questions ..!</h5>
+                </td>
+            </tr>
+        </tbody>
+        <br /><br />
+    </table>
+</div>

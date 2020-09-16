@@ -1,0 +1,185 @@
+<nav class="navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow" style="background-color: #76618b;">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/admin" style="background-color: #524361;padding-right: 20%;">
+        <i class="fas fa-envelope-open-text"></i> &nbsp;{{testTitle}}
+    </a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item">
+            <span class="text-white">{{userName}} &nbsp;<i class="fa fa-user" aria-hidden="true"></i></span>
+        </li>
+    </ul>
+</nav>
+<div class="container" style="margin-top: 10%;" *ngIf="step == 1">
+    <div class="offset-lg-1 offset-md-1 col-lg-10 col-md-10 shadow-lg p-3 mb-5 bg-white rounded"
+        style="margin-top: 6%;">
+        <h3 style=" font-family: monospace;font-size: 30px;"> Please Enable Full Screen Mode To Start with a Test <i
+                class="fas fa-file-alt"></i></h3>
+        <hr>
+        <br>
+        <button class="btn btn-primary" (click)="openFullscreen()"
+            style="margin-left:31%; font-family: 'Trebuchet MS';font-size: 20px;">Enable Full Screen Mode !</button>
+    </div>
+</div>
+<div class="container" style="margin-top: 8%;" *ngIf="step == 2">
+    <div class="offset-lg-1 offset-md-1 col-lg-10 col-md-10 shadow-lg p-3 mb-5 bg-white rounded my-custom-scrollbar"
+        style="margin-top: 6%;">
+        <h3 style="margin-left:25%; font-family: monospace;font-size: 30px;">Exam Terms And Conditions <i
+                class="fas fa-chalkboard-teacher"></i></h3>
+        <hr>
+        <br>
+        <p>
+            <i class="fas fa-hand-point-right"></i> <b> Before you begin a test, Read the instructions very
+                carefully.:</b>
+        </p>
+        <ul>
+            <li><b>Do Not Refresh </b> the test Page Otherwise test get submitted Automatically.</li>
+            <li><b>Do Not Close Test Tab </b>Direclty without Submiting the Test Otherwise your Test Data may lost.</li>
+            <li><b>Please save your answer </b>after attempting the questions.</li>
+            <li>Do No Go Back Else Test will Submit Automatically.</li>
+            <li><b>Close All the notification </b>while attempting test.</li>
+            <li>Accept all <b>Terms and Condition</b> to Start a Test.</li>
+        </ul>
+        <hr>
+        <br>
+        <h2 style="margin-left: 29%;font-family: monospace;">Test Title: {{test.testTitle}}</h2>
+        <br>
+        <h4 style="font-family: monospace;">Test Duration: {{test.testDuration}} Minutes</h4>
+        <h4 style="font-family: monospace;">Total Question: {{test.totalQuestion}}</h4>
+        <h4 style="font-family: monospace;">Question Type: MCQ</h4>
+        <h4 style="font-family: monospace;">Total Marks: {{test.testTotalMarks}}</h4>
+        <hr>
+        <input type="checkbox" [(ngModel)]="checked" style="margin-left: 30%;font-family: monospace;"> &nbsp;I have read
+        and agree to the Terms & Conditions
+        <br><br>
+        <button [disabled]="!checked" mat-button class="NxtBtnWrap btn btn-success" type="submit"
+            style="margin-left: 38%;font-family: monospace;font-size: 18px;" (click)="nextStep()">Accept and proceed
+            ></button>
+
+    </div>
+
+</div>
+<div style="margin-top: 3%;" *ngIf="step == 3">
+    <h1 style="margin-left: 40%;font-family: monospace;">{{test.testTitle}}</h1>
+    <div class="row">
+    <div class="offset-lg-1 offset-md-1  col-lg-2 col-md-2 shadow-lg p-3 mb-5 bg-white rounded" >
+        <h3 style=" font-family: monospace;font-size: 30px;"> Total Question:</h3>
+            <hr>  
+            <h3 style=" font-family: monospace;font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{test.totalQuestion}}</h3>
+            
+     </div> 
+    <div class="col-lg-2 col-md-2 shadow-lg p-3 mb-5 bg-white rounded" >
+        <h3 style=" font-family: monospace;font-size: 30px;"> Attempted: </h3>
+        <hr>  
+        <h3 style=" font-family: monospace;font-size: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{totalAttempts}}</h3>
+        
+    </div>    
+    <div class="col-lg-2 col-md-2 shadow-lg p-3 mb-5 bg-white rounded" >
+        <h3 style=" font-family: monospace;font-size: 30px;"> Question Left: </h3>
+        <hr>  
+        <h3 style=" font-family: monospace;font-size: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{test.totalQuestion-totalAttempts}}</h3>    
+    </div>  
+
+
+    <div class="col-lg-2 col-md-2 shadow-lg p-3 mb-5 bg-white rounded" 
+        *ngIf="!timeOutAlert">
+        <h3 style=" font-family: monospace;font-size: 30px;"> Time Left <i class="fas fa-clock"></i>:</h3>
+        <hr>  
+        <h3 style=" font-family: monospace;font-size: 30px;">&nbsp;&nbsp; 
+            <countdown #countdown  [config]="{leftTime: [timer]}">$!h!:$!m!:$!s!</countdown>
+        </h3>
+    </div>
+
+    <div class="col-lg-2 col-md-2 shadow-lg p-3 mb-5 bg-warning rounded" 
+    *ngIf="timeOutAlert">
+    <h3 style=" font-family: monospace;font-size: 30px;"> Time Left <i class="fas fa-clock"></i>:</h3>
+    <hr> 
+    <h3 style=" font-family: monospace;font-size: 30px;">&nbsp;&nbsp; 
+        <countdown #countdown  [config]="{leftTime: [timer]}">$!h!:$!m!:$!s!</countdown>
+    </h3>
+    </div>
+
+
+    <div class = "col-lg-2 col-md-2 shadow-lg p-3 mb-5 bg-white rounded">
+        <hr>  
+        <button class="btn btn-success" (click) = "Review()" style="margin-left: 20%;">Review And Submit</button>
+        
+    </div>
+
+   
+</div>
+    <div class="row">
+
+        <div class="offset-lg-1 offset-md-1 col-lg-3 col-md-3 shadow-lg p-3 mb-5 bg-white rounded my-custom-scrollbar1">
+            <h3 style=" font-family: monospace;font-size: 30px;"> Questions: </h3>
+            <hr>
+            <ng-container *ngFor="let number of numberOfQuestion">
+                <button style="margin-left: 8%;font-size: 28px; margin-top: 2%;"
+                    class="test btn btn-outline-secondary btn-lg" *ngIf="answerStatus[number] == -1 && (number != currentQuestion)"
+                    (click)="visitQuestion(number)">{{number+1}}</button>
+                <button style="margin-left: 8%;font-size: 28px; margin-top: 2%;" class="test btn btn-success btn-lg"
+                    *ngIf="answerStatus[number] == 1 && (number != currentQuestion)" (click)="visitQuestion(number)">{{number+1}}</button>
+                <button style="margin-left: 8%;font-size: 28px; margin-top: 2%;" class="test btn btn-warning btn-lg"
+                    *ngIf="(number == currentQuestion)" (click)="visitQuestion(number)">{{number+1}}</button>       
+                  
+            </ng-container>
+            <br>
+            <hr>
+            <button style="margin-left: 8%;font-size: 28px; margin-top: 2%;"
+                    class="test btn btn-outline-secondary btn-lg"></button>  : No Selection.
+                    <br>
+            <button style="margin-left: 8%;font-size: 28px; margin-top: 2%;"
+                    class="test btn btn-success btn-lg"></button>  : Answer Marked.
+                    <br>
+            <button style="margin-left: 8%;font-size: 28px; margin-top: 2%;"
+                    class="test btn btn-warning btn-lg"></button>  : Currently Visited.                
+
+        </div>
+
+        <div class="offset-lg-1 offset-md-1 col-lg-6 col-md-6 shadow-lg p-3 mb-5 bg-white rounded my-custom-scrollbar1">
+            <h3 style=" font-family: monospace;font-size: 30px;"> Question And Options: </h3>
+            <hr>
+            <h4>Question No. {{currentQuestion+1}}:</h4>
+             <h3>{{questionList[currentQuestion].questionTitle}}</h3>
+            <br>
+            <hr>
+            <h4>Options: </h4>
+            <br>
+            <form [formGroup]="SelectOption">
+           <input type="radio" id="answer" formControlName="option" value=1> {{questionList[currentQuestion].questionOptions[0]}}   <i class="fas fa-check-circle" *ngIf = "answer[currentQuestion]==1" style="color: chartreuse;"></i>
+           <br>
+            <input type="radio" id="answer" formControlName="option" value=2 > {{questionList[currentQuestion].questionOptions[1]}}   <i class="fas fa-check-circle" *ngIf = "answer[currentQuestion]==2" style="color: chartreuse;"></i>
+            <br>
+            <input type="radio" id="answer" formControlName="option" value=3 > {{questionList[currentQuestion].questionOptions[2]}}   <i class="fas fa-check-circle" *ngIf = "answer[currentQuestion]==3" style="color: chartreuse;"></i>
+            <br>
+            <input type="radio" id="answer" formControlName="option" value=4 > {{questionList[currentQuestion].questionOptions[3]}}   <i class="fas fa-check-circle" *ngIf = "answer[currentQuestion]==4" style="color: chartreuse;"></i>
+        </form>
+          <br><hr>
+          <div class="row">
+              
+              <div class="col-lg-3 col-sm-3 col-md-3">
+                <button class="btn btn-danger" (click) = "clearOption()"> clear answer</button>
+              </div>
+              <div class="col-lg-3 col-sm-3 col-md-3">
+                  <button class="btn btn-success" (click) = "setChooseOption()"> Save Answer</button>
+              </div>
+              <div class="col-lg-3 col-sm-3 col-md-3">
+                <button class="btn btn-primary" *ngIf = "currentQuestion != 0" (click) = "previousQuestion()"> &larr; Previous Question</button>
+                <button class="btn btn-primary" *ngIf = "currentQuestion == 0" disabled>  &larr;Previous Question </button>
+              </div>
+              <div class="col-lg-3 col-sm-3 col-md-3">
+                <button class="btn btn-primary" *ngIf = "currentQuestion != test.totalQuestion-1" (click) = "nextQuestion()">Next Question &rarr;</button>
+                <button class="btn btn-primary" *ngIf = "currentQuestion == test.totalQuestion-1" disabled>Next Question &rarr;<i class="fas fa-forword"></i></button>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 10%;" *ngIf="step == 4">
+    <div class="offset-lg-1 offset-md-1 col-lg-10 col-md-10 shadow-lg p-3 mb-5 bg-white rounded"
+        style="margin-top: 6%;">
+        <h3 style=" font-family: monospace;font-size: 30px;"> Thank You... Your Test is Submitted Successfully  
+        <i class="fa fa-thumbs-up" style="font-size:44px;color:green"></i> <br> Please close the window</h3>
+        <hr>
+        <br>
+    </div>
+</div>

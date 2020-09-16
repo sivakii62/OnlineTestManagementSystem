@@ -1,0 +1,176 @@
+<div class="animated">
+    <h3 class="text-center mt-3"><i class="fas fa-home"></i>&nbsp; Dashboard</h3>
+    <hr>
+    <section class="pt-1">
+        <div class="row container-fluid pt-3">
+
+            <div class="col-lg-3 col-md-3 col-6">
+                <div class="card-counter success">
+                    <i class="fas fa-align-center"></i>
+                    <span class="count-numbers">{{TotalnumberOfTest}}</span>
+                    <span class="count-name">Total Registed Test : </span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-6">
+                <div class="card-counter danger">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span class="count-numbers">{{TotalUpcomingTest}}</span>
+                    <span class="count-name">Upcoming Test : </span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-6">
+                <div class="card-counter primary">
+                    <i class="fas fa-skiing"></i>
+                    <span class="count-numbers">{{TotalCurrentlyActiveTest}}</span>
+                    <span class="count-name">currently Active Test : </span>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-6">
+                <div class="card-counter info">
+                    <i class="fa fa-hourglass-end" aria-hidden="true"></i>
+                    <span class="count-numbers">{{TotalPassTest}}</span>
+                    <span class="count-name">Passed Test : </span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <br>
+    <hr>
+    <!-- <div class="row container-fluid mt-3"> -->
+        <!-- <div class="col-lg-6 mt-2">
+            <h5 class="text-center pt-3"><i class="fas fa-chart-line"></i> &nbsp;Most Recently Registered Test</h5>
+            <table class="table table-responsive table-striped table-hover border mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Test Name</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let test of upcomingTest; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{test.testTitle}}</td>
+                        <td>{{test.startDate | date:'medium'}}</td> 
+                        <td>{{test.endDate | date:'medium'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+        <!-- <div class="col-lg-6 mt-2 ">
+            <h5 class="text-center pt-3"><i class="fas fa-chart-line"></i> &nbsp;Currently Active Test</h5>
+            <table class="table table-striped table-hover border mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Test Name</th>
+                        <th scope="col">Start date</th>
+                        <th scope="col">End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let test of ActiveTest; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{test.testTitle}}</td>
+                        <td>{{test.startDate | date:'medium'}}</td> 
+                        <td>{{test.endDate | date:'medium'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+    <!-- </div> -->
+    <div class="row container-fluid mt-2">
+        <div class="col-lg-12 mt-2">
+            <h5 class="text-center pt-3"><i class="fas fa-list-ul"></i> &nbsp;All Test List</h5>
+            <table class="table table-striped table-hover border mt-3">
+                <thead>
+                    <tr> 
+                        <th scope="col">#</th>
+                        <th scope="col">Test Title</th>
+                        <th scope="col">Test Duration</th>
+                        <th scope="col">Test Total Marks</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Total Question</th>
+                        <th scope="col">Test Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let test of allTest; let i=index;">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{test.testTitle}}</td>
+                        <td>{{test.testDuration}}</td>
+                        <td>{{test.testTotalMarks}}</td>
+                        <td>{{test.startDate | date:'medium'}}</td>
+                        <td>{{test.endDate | date:'medium'}}</td>
+                        <td>{{test.totalQuestion}}</td>
+                        <td *ngIf="test.testStatus == 1">UpComing..</td>
+                        <td *ngIf="test.testStatus == -1">Passed!..</td>
+                        <td *ngIf="test.testStatus == 0">Active..</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Product Modal -->
+<!-- <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{prod.productName}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row container-fluid">
+                <div class="col-lg-4" *ngIf="prod.productId">
+                    <img src="/assets/images/{{prod.productId}}.jpg" height="600px" width="200px" class="img-fluid">
+                </div>
+                <div class="col-lg-8">
+                    <b>Price : </b>{{prod.productPrice|currency:'INR'}}<br>
+                    <b>Discount : </b>{{prod.discount}}%<br>
+                    <b>Rating : </b><span class="text-warning fas fa-star" *ngFor="let i of counter(prod.productRating)"></span><br>
+                    <b>Description : </b>{{prod.productInfo}}<br>
+                    <b>Views : </b>{{prod.noOfViews}}<br>
+                    <b>Stocks Available : </b>{{prod.noOfProducts}}
+                     <h5>Merchant : </h5>{{prod.merchant.username}} 
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="merchantModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{merchant.username}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <b>Name : </b>{{merchant.name}}<br>
+            <b>Phone : </b>{{merchant.phoneNo}}<br>
+            <b>Alternate Phone : </b>{{merchant.alternatePhoneNo}}<br>
+            <b>EmailId : </b>{{merchant.alternateEmail}}<br>
+            <b>Rating : </b><span class="text-warning fas fa-star" *ngFor="let i of counter(merchant.rating)"></span><br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> -->

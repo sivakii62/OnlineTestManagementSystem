@@ -1,0 +1,45 @@
+<div class="col-md-12 col-lg-12" style="margin-top: 5%;">
+    <h3 style="text-align: center;font-size: 40px;">Assign Test</h3>
+    <br/>
+    <div class="row">
+        <label for="userId" class="col-lg-4 text-right font-weight-bold">
+            User :
+        </label>
+        <div class="col-lg-4 col-md-4">
+            <select class="text-center form-control" [(ngModel)]="userId">
+                <option *ngFor="let cat of users;" [value]="cat.userId">
+                    {{cat.userName}}
+                </option>
+                <option *ngIf="!users || users.length==0" disabled>No
+                    Users..</option>
+            </select>
+            <div *ngIf="userId==-1" class="text-danger">
+                User is Required..!
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <label for="testId" class="col-lg-4 text-right font-weight-bold">
+            Test :
+        </label>
+        <div class="col-lg-4 col-md-4">
+            <select class="text-center form-control" [(ngModel)]="testId">
+                <option *ngFor="let cat of tests;" [value]="cat.test_Id">
+                    {{cat.testTitle}}
+                </option>
+                <option *ngIf="!tests || tests.length==0" disabled>No
+                    Tests..</option>
+            </select>
+            <div *ngIf="testId==-1" class="text-danger">
+                Test is Required..!
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="offset-lg-2 col-lg-6 col-md-6 text-right">
+        <button class="btn btn-outline-success" (click)="assign()">Assign</button> &nbsp; &nbsp;
+        <!-- <a class="btn btn-outline-danger" (click)="cancel()">Cancel</a> -->
+    </div>
+
+</div>

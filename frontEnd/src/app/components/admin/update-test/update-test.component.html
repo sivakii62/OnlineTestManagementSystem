@@ -1,0 +1,139 @@
+<div class="col-md-12 col-lg-12" style="margin-top: 5%;">
+    <h3 style="text-align: center;font-size: 40px;">Edit Test</h3>
+    <br/>
+
+<!-- edit Test form-->
+<form [formGroup]="editTestForm" (ngSubmit)="updateTest()">
+
+        <!-- disabling test id-->
+        <div class="form-group row">
+            <label for="test_Id" class="col-lg-4 text-right font-weight-bold">
+                Test Id :
+            </label>
+
+            <div class="col-lg-4 col-md-4">
+                <input type="text" class="form-control" placeholder="Full Name" formControlName="test_Id" />
+
+            </div>
+        </div>
+        <!-- testDuration Text Box -->
+        <!-- testTitle Text Box -->
+        <div class="form-group row ">
+            <label for="testTitle" class="col-lg-4 text-right font-weight-bold">
+                Test :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="text" class="form-control " placeholder="testTitle" formControlName="testTitle" />
+
+                <!-- validations for test title-->
+                <div *ngIf="submitted && editTestForm.controls.testTitle.errors">
+                    <div class="text-danger" *ngIf="editTestForm.controls.testTitle.errors.required">
+                        Test Name is required ..!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of  testTitle Text Box -->
+        <!-- Test duration-->
+        <div class="form-group row">
+            <label for="testDuration" class="col-lg-4 text-right font-weight-bold">
+                Duration :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="number" class="form-control" placeholder="testDuration" formControlName="testDuration" />
+
+                <!-- validations for test title form-->
+                <div *ngIf="submitted && editTestForm.controls.testDuration.errors">
+                    <div class="text-danger" *ngIf="editTestForm.controls.testDuration.errors.required">
+                        Answer is required ..!
+                    </div>
+                    <div class="text-danger" *ngIf="editTestForm.controls.testDuration.errors.min || editTestForm.controls.testDuration.errors.max">
+                        Option must be between 1 and 4 ..!
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- End of  testDuration Text Box -->
+
+        <!-- testTotalMarks Text Box -->
+        <div class="form-group row">
+            <label for="testTotalMarks" class="col-lg-4 text-right font-weight-bold">
+                Marks :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="number" class="form-control" formControlName="testTotalMarks" />
+
+                <!-- validation for test total marks-->
+                <div *ngIf="submitted && editTestForm.controls.testTotalMarks.errors">
+                    <div class="text-danger" *ngIf="editTestForm.controls.testTotalMarks.errors.required">
+                        Marks is required ..!
+                    </div>
+                    <div class="text-danger" *ngIf="editTestForm.controls.testTotalMarks.errors.min">
+                        Marks cant be negative..!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- total question-->
+        <div class="form-group row">
+            <label for="totalQuestion" class="col-lg-4 text-right font-weight-bold">
+                Questions :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="number" class="form-control" formControlName="totalQuestion" />
+
+                <!-- validation for total question-->
+                <div *ngIf="submitted && editTestForm.controls.totalQuestion.errors">
+                    <div class="text-danger" *ngIf="editTestForm.controls.totalQuestion.errors.required">
+                        Marks is required ..!
+                    </div>
+                    <div class="text-danger" *ngIf="editTestForm.controls.totalQuestion.errors.min">
+                        Marks cant be negative..!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--start date-->
+        <div class="form-group row">
+            <label for="startDate" class="col-lg-4 text-right font-weight-bold">
+                Start Date :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="datetime-local" class="form-control" formControlName="startDate" />
+                <div *ngIf="startDateError">
+                    <div class="text-danger">
+                        {{message}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end date-->
+        <div class="form-group row">
+            <label for="endDate" class="col-lg-4 text-right font-weight-bold">
+                End Date :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="datetime-local" class="form-control" formControlName="endDate" />
+                <div *ngIf="endDateError">
+                    <div class="text-danger">
+                        {{message}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br/>
+    <br/>
+    <div class="offset-lg-2 col-lg-6 col-md-6 text-right">
+        <button class="btn btn-outline-success" (click)="updateTest()">Update</button> &nbsp; &nbsp;
+        <button class="btn btn-outline-success" (click)="updateQuestions()">Update Questions</button> &nbsp; &nbsp;
+        
+        <a class="btn btn-outline-danger" routerLink="/admin/testList">Cancel</a>
+    </div>
+    <br/><br/>
+
+</div>

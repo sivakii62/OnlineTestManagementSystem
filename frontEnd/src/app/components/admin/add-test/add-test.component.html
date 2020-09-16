@@ -1,0 +1,103 @@
+<div class="col-md-12 col-lg-12" style="margin-top: 5%;">
+    <h3 style="text-align: center;font-size: 40px;">Add Test</h3>
+    <br/>
+
+<!-- Form for adding a new test-->
+<form [formGroup]="addTestForm" (ngSubmit)="addTest()">
+        <div class="form-group row ">
+
+            <!-- test title-->
+            <label for="testTitle" class="col-lg-4 text-right font-weight-bold">
+                Test Name :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="text" class="form-control " placeholder="Title" formControlName="testTitle" />
+
+                <!-- validations for test title-->
+                <div *ngIf="submitted && addTestForm.controls.testTitle.errors">
+                    <div class="text-danger" *ngIf="addTestForm.controls.testTitle.errors.required">
+                        Test Name is required ..!
+                    </div>
+                </div>
+                <div *ngIf="titleError">
+                    <div class="text-danger">
+                        {{message}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of  testTitle Text Box -->
+        <div class="form-group row">
+            <label for="testDuration" class="col-lg-4 text-right font-weight-bold">
+                Duration in minutes :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="number" class="form-control" placeholder="Duration" formControlName="testDuration" />
+
+                <!-- validations for test duration-->
+                <div *ngIf="submitted && addTestForm.controls.testDuration.errors">
+                    <div class="text-danger" *ngIf="addTestForm.controls.testDuration.errors.required">
+                        Duration is required ..!
+                    </div>
+                    <div class="text-danger" *ngIf="addTestForm.controls.testDuration.errors.min">
+                        Duration cannot be negative..!
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- End of  testDuration Text Box -->
+
+        <!-- Test start date-->
+        <div class="form-group row">
+            <label for="startDate" class="col-lg-4 text-right font-weight-bold">
+                Start Date :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="datetime-local" class="form-control" formControlName="startDate" />
+                <!-- validations for start date-->
+                <div *ngIf="submitted && addTestForm.controls.startDate.errors">
+                    <div class="text-danger" *ngIf="addTestForm.controls.startDate.errors.required">
+                        Start Date is required ..!
+                    </div>
+                </div>
+               <div *ngIf="startDateError">
+                    <div class="text-danger">
+                        {{message}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- end date-->
+        <div class="form-group row">
+            <label for="endDate" class="col-lg-4 text-right font-weight-bold">
+                End Date :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="datetime-local" class="form-control" formControlName="endDate" />
+                <!-- validations for end date-->
+                <div *ngIf="submitted && addTestForm.controls.endDate.errors">
+                    <div class="text-danger" *ngIf="addTestForm.controls.endDate.errors.required">
+                        End Date is required ..!
+                    </div>
+                </div>
+                <div *ngIf="endDateError">
+                    <div class="text-danger">
+                        {{message}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- enf of adding a new test form-->
+    <br/>
+    <br/>
+    <div class="offset-lg-2 col-lg-6 col-md-6 text-right">
+        <button class="btn btn-outline-success" (click)="addTest()">Add</button> &nbsp; &nbsp;
+        
+        <button class="btn btn-outline-danger" type="reset">Cancel</button>
+    </div>
+    <br/><br/>
+
+</div>

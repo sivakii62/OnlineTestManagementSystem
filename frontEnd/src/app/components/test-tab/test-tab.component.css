@@ -1,0 +1,14 @@
+.my-custom-scrollbar{
+    position: relative;
+    height: 700px;
+    overflow: auto;
+}
+.my-custom-scrollbar1{
+    position: relative;
+    height: 550px;
+    overflow: auto;
+}
+.test{
+    height: 60px;
+    width: 60px;
+}

@@ -1,0 +1,79 @@
+
+<!-- <div class="toastb" *ngIf="showToastSuccess">
+    <div class="modal-header">
+        <p class="lead text-success font-weight-bold" *ngIf="success"> Success - {{success.header}}</p>
+        <button (click)="successToggle()" class="btn btn-transparent">
+            <i class="fas fa-times-circle text-success"></i>
+        </button>
+    </div>
+    <div class="modal-body text-success font-weight-bold" *ngIf="success">
+        <p class="blockquote">{{success.message}}</p>
+    </div>
+</div>
+<div> -->
+
+
+
+
+<nav class="navbar navbar-dark fixed-top flex-md-nowrap p-0 shadow" style="background-color: #76618b;">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/user" style="background-color: #524361;">
+        <i class="fas fa-shopping-cart"></i> &nbsp;USER PAGE
+    </a>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item">
+            <span class="text-white">{{userName}} &nbsp;<i class="fa fa-user" aria-hidden="true"></i></span>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item main">
+                        <a class="nav-link" routerLink="/userDashboard">
+                            <i class="fas fa-home"></i>&nbsp; Dashboard <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item main">
+                        <a class="nav-link main" data-toggle="collapse" routerLink="/userDashboard/attemptTest">
+                            <i class="fa fa-align-right" aria-hidden="true"></i>&nbsp; Attempt Test
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item main">
+                        <a class="nav-link main" data-toggle="collapse" routerLink="/userDashboard/register">
+                            <i class="fas fa-pencil-alt"></i>&nbsp; Register In Test
+
+                        </a>
+                    </li> -->
+
+                    <li class="nav-item main">
+                        <a class="nav-link main" data-toggle="collapse" routerLink="/userDashboard/result">
+                            <i class="fas fa-chart-pie"></i>&nbsp; Result Analysis
+
+                        </a>
+                    </li>
+
+                    <li class="nav-item main">
+                        <a class="nav-link" routerLink="" (click)="logOut()">
+                            <i class="fas fa-sign-out-alt" aria-hidden="true"></i>&nbsp; Log Out
+                        </a>
+                    </li>
+                    <br>
+                    <br>
+                    <li class="nav-item">
+                        <a class="nav-link">
+                            <p><i class="fas fa-calendar-alt"></i> &nbsp;{{todaysDate | date}}</p>
+                            <p><i class="fas fa-clock"></i> &nbsp;{{todaysDate | date:'h:mm:ss a'}}</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>

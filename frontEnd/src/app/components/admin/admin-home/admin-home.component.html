@@ -1,0 +1,171 @@
+<div class="col top-level">
+    <!--heading row-->
+    <div class="row card-row">
+        <h3 style="font-family: monospace;"> Admin Dashboard </h3>
+    </div>
+
+    <!--first card row-->
+    <div class="row card-row">
+
+        <!--Card: All users-->
+        <div>
+            <div class="card"routerLink="/admin/assignTest" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title center">Total Users</h5>
+                    <p class="card-text center">{{users?.length}}</p>
+                </div>
+            </div>
+        </div>
+
+        <!--Card: All tests-->
+        <div>
+            <div class="card" routerLink="/admin/testList" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title center">Total Tests</h5>
+                    <p class="card-text center">{{tests?.length}}</p>
+                </div>
+            </div>
+        </div>
+
+        <!--Card: All Questions-->
+        <div>
+            <div class="card"routerLink="/admin/questionList"  style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title center">Total Questions</h5>
+                    <p class="card-text center">{{questions?.length}}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <div class="row table-row">
+
+        <div class="shadow-lg p-4 mb-5  rounded table-wrapper-scroll-y my-custom-scrollbar" style="margin-top: 3%;">
+            <table class="table table-striped  table-hover text-bold">
+                <thead style="background-color: #807191;">
+                    <tr>
+                        <th colspan="3">Tests given by:</th>
+                        <th>
+                            <select [(ngModel)]="searchUser">
+                                <option value="undefined" hidden default selected >Select a user...</option>
+                                <option value=""  selected >All users...</option>
+                                <option *ngFor="let test of testsUserDetails" [value]="test.user.userName">
+                                    {{test.user.userName}}</option>
+                            </select>
+                        </th>
+
+                    </tr>
+                </thead>
+                <ng-container *ngIf="(testsUserDetails | searchtext:searchUser:searchBy[0]) as result">
+
+                    <thead style="background-color: #807191;">
+                        <tr>
+                            <th>Test Title</th>
+                            <th>is Attempted</th>
+                            <th>Total Marks</th>
+                            <th>Marks Obtained</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of testsUserDetails | searchtext:searchUser:searchBy[0]">
+                            <td>{{user.test.testTitle}}</td>
+                            <td>{{user.attempted}}</td>
+                            <td>{{user.test.testTotalMarks}}</td>
+                            <td>{{user.marksScored}}</td>
+
+                        </tr>
+                        <td *ngIf="result.length == 0" colspan="6">
+                            <h5 style="text-align: center; color: rgb(255, 110, 110);"> Sorry, No Test available with
+                                "{{searchUser}}" name, Try for diffrent...! </h5>
+                        </td>
+                    </tbody>
+
+                </ng-container>
+            </table>
+        </div>
+
+        <div class="shadow-lg p-4 mb-5  rounded table-wrapper-scroll-y my-custom-scrollbar" style="margin-top: 3%;">
+            <table class="table table-striped  table-hover text-bold">
+                <thead style="background-color: #807191;">
+                    <tr>
+                        <th colspan="2">Users given test:</th>
+                        <th>
+                            <select [(ngModel)]="searchTest">
+                                <option value="undefined" hidden default selected >Select a test...</option>
+                                <option value=""  selected >All test...</option>
+                                <option *ngFor="let test of usersTestDetails" [value]="test.test.testTitle">
+                                    {{test.test.testTitle}}</option>
+                            </select>
+                        </th>
+                    </tr>
+                </thead>
+                <ng-container *ngIf="(usersTestDetails | searchtext:searchTest:searchBy[1]) as result">
+
+                    <thead style="background-color: #807191;">
+                        <tr>
+                            <th>User Name</th>
+                            <th>Total Marks</th>
+                            <th>Marks Obtained</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of usersTestDetails | searchtext:searchTest:searchBy[1]">
+                            <td>{{user.user.userName}}</td>
+                            <td>{{user.test.testTotalMarks}}</td>
+                            <td>{{user.marksScored}}</td>
+
+                        </tr>
+                        <td *ngIf="result.length == 0" colspan="6">
+                            <h5 style="text-align: center; color: rgb(255, 110, 110);"> Sorry, No Test available with
+                                "{{searchUser}}" name, Try for diffrent...! </h5>
+                        </td>
+                    </tbody>
+
+                </ng-container>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="row graph-row">
+
+        <div class="graph-format">
+            <canvas id="canvas" style="position: relative; height:35vh; width:30vw"></canvas>
+        </div>
+
+        <div class="shadow-lg p-4 mb-5  rounded table-wrapper-scroll-y my-custom-scrollbar" style="margin-top: 3%;">
+            <table class="table table-striped  table-hover text-bold">
+                <thead style="background-color: #807191;">
+                    <tr>
+                        <th class="center" colspan="4">Overall top performers</th>
+                    </tr>
+                </thead>
+                <ng-container *ngIf="(topPerformers) as result">
+
+                    <thead style="background-color: #807191;">
+                        <tr>
+                            <th>User Name</th>
+                            <th>Total Marks</th>
+                            <th>Marks Obtained</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of topPerformers">
+                            <td>{{user.user.userName}}</td>
+                            <td>{{user.test.testTotalMarks}}</td>
+                            <td>{{user.marksScored}}</td>
+                            <td>{{user.marksScored/user.test.testTotalMarks}}</td>
+                        </tr>
+                        <td *ngIf="result.length == 0" colspan="6">
+                            <h5 style="text-align: center; color: rgb(255, 110, 110);"> Sorry, No Test available with
+                                "{{searchUser}}" name, Try for diffrent...! </h5>
+                        </td>
+                    </tbody>
+
+                </ng-container>
+            </table>
+        </div>
+    </div> -->
+</div>

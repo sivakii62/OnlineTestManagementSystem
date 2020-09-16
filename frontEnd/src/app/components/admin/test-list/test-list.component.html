@@ -1,0 +1,52 @@
+<br /><br />
+
+
+
+<div class="offset-lg-1 col-lg-10 col-md-10">
+    <h2>All Tests</h2>
+    <!-- table for displaying all the available tests-->
+    <table class="table table-striped table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Test</th>
+                <th>Marks</th>
+                <th>Questions</th>
+                <th>Duration</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- looping through the tests and displaying details-->
+            <tr *ngFor="let test of tests">
+                <td>{{test.test_Id}}</td>
+                <td >{{test.testTitle}}</td>
+                <td>{{test.testTotalMarks}}</td>
+                <td>{{test.totalQuestion}}</td>
+                <td>{{test.testDuration}} mins</td>
+                <td style="width: 150px;">{{test.startDate | date:'medium'}}</td>
+                <td style="width: 150px;">{{test.endDate |date:'medium'}}</td>
+                <td>
+                    <button class="btn btn-outline-warning" type="button"
+                        (click)="updateTest(test.test_Id)">Update</button>
+                </td>
+                <td>
+                    <button class="btn btn-outline-danger" type="button"
+                        (click)="deleteTest(test)">Delete</button>
+                </td>
+            </tr>
+            <!-- message if no tests are available-->
+            <tr>
+
+                <td *ngIf="tests?.length==0" colspan="10">
+                    <h5 class="text-center text-danger">
+                    Sorry, No Tests ..!</h5>
+                </td>
+            </tr>
+        </tbody>
+        <br /><br />
+    </table>
+</div>

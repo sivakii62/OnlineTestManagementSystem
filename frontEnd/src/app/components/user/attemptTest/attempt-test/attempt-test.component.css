@@ -1,0 +1,39 @@
+.inputField {
+    border-top: 2px solid green;
+    border-bottom: 2px solid green;
+    border-radius: 5px;
+    width: 400px;
+}
+.categoryInput {
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+    border: none;
+    font-size: x-large;
+    margin-left: 10px;
+    padding: 10px;
+}
+.my-custom-scrollbar{
+    position: relative;
+    height: 450px;
+    overflow: auto;
+}
+.table-wrapper-scroll-y{
+    display: block;
+}
+
+
+  .inputField {
+    border-top: 2px solid green;
+    border-bottom: 2px solid green;
+    border-radius: 10px;
+    width: 350px;
+}
+
+.selectOption {
+  background-color: rgba(255, 255, 255, 0);
+  outline: none;
+  border: none;
+  font-size: 20px;
+  margin-left: 10px;
+  padding: 10px;
+}

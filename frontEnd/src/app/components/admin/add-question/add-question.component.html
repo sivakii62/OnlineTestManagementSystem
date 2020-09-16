@@ -1,0 +1,188 @@
+
+<!-- Adding Question, Options and  selecting a Category-->
+<div *ngIf="!categoryBlock" class="col-md-12 col-lg-12" style="margin-top: 5%;">
+    <h3 style="text-align: center;font-size: 40px;">Add Question</h3>
+    <br/>
+
+    <!-- Form creation for adding a new question-->
+    <form [formGroup]="addQueForm">
+
+        <!-- Question Title -->
+        <div class="form-group row ">
+            <label for="questionTitle" class="col-lg-4 text-right font-weight-bold">
+                Question :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="text" class="form-control " placeholder="Title" formControlName="questionTitle" />
+
+                <!-- validations for question title-->
+                <div *ngIf="submitted && addQueForm.controls.questionTitle.errors">
+                    <div class="text-danger" *ngIf="addQueForm.controls.questionTitle.errors.required">
+                        Question is required ..!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question Answer-->
+        <div class="form-group row">
+            <label for="questionAnswer" class="col-lg-4 text-right font-weight-bold">
+                Correct Option :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="number" class="form-control" placeholder="Answer"
+                    formControlName="questionAnswer" />
+
+                <!-- validations for question answer-->
+                <div *ngIf="submitted && addQueForm.controls.questionAnswer.errors">
+                    <div class="text-danger" *ngIf="addQueForm.controls.questionAnswer.errors.required">
+                        Answer is required ..!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="addQueForm.controls.questionAnswer.errors.min || addQueForm.controls.questionAnswer.errors.max">
+                        Option must be between 1 and 4 ..!
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Question marks -->
+        <div class="form-group row">
+            <label for="questionMarks" class="col-lg-4 text-right font-weight-bold">
+                Marks :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="number" class="form-control" placeholder="marks" formControlName="questionMarks" />
+
+                <!-- Validations for Question marks-->
+                <div *ngIf="submitted && addQueForm.controls.questionMarks.errors">
+                    <div class="text-danger" *ngIf="addQueForm.controls.questionMarks.errors.required">
+                        Marks is required ..!
+                    </div>
+                    <div class="text-danger" *ngIf="addQueForm.controls.questionMarks.errors.min">
+                        Marks cant be negative..!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- end of Question form-->
+    <br />
+
+    <!-- Adding options for the question-->
+    <!-- option 1-->
+    <div class="row">
+        <label for="option1" class="col-lg-4 text-right font-weight-bold">
+            Option 1 :
+        </label>
+        <div class="col-lg-4 col-md-4">
+            <input type="text" class="form-control" placeholder="option 1" [(ngModel)]="option1" />
+        </div>
+    </div>
+    <br />
+
+     <!-- option 2-->
+    <div class="row">
+        <label for="option2" class="col-lg-4 text-right font-weight-bold">
+            Option 2 :
+        </label>
+        <div class="col-lg-4 col-md-4">
+            <input type="text" class="form-control" placeholder="option 2" [(ngModel)]="option2" />
+        </div>
+    </div>
+    <br />
+
+     <!-- option 3-->
+    <div class="row">
+        <label for="option3" class="col-lg-4 text-right font-weight-bold">
+            Option 3 :
+        </label>
+        <div class="col-lg-4 col-md-4">
+            <input type="text" class="form-control" placeholder="option 3" [(ngModel)]="option3" />
+        </div>
+    </div>
+    <br />
+
+     <!-- option 4-->
+    <div class="row">
+        <label for="option4" class="col-lg-4 text-right font-weight-bold">
+            Option 4 :
+        </label>
+        <div class="col-lg-4 col-md-4">
+            <input type="text" class="form-control" placeholder="option 4" [(ngModel)]="option4" />
+            <div *ngIf="option">
+                <div class="text-danger">
+                    All options are required ..!
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <!--Adding Category to which the question belongs to-->
+    <div class="row">
+        <label for="selectedCategory" class="col-lg-4 text-right font-weight-bold">
+            Category :
+        </label>
+
+        <!-- selecting from the existing categories-->
+        <div class="col-lg-4 col-md-4">
+            <select class="text-center form-control" [(ngModel)]="selectedCategory">
+                <option *ngFor="let cat of categories;" [value]="cat.categoryId">
+                    {{cat.name}}
+                </option>
+                <option *ngIf="!categories || categories.length==0" disabled>No
+                    Categories..</option>
+            </select>
+            <div *ngIf="selectedCategory==-1" class="text-danger">
+                Category is Required..!
+            </div>
+        </div>
+    </div>
+    <!-- Link for Adding a new Category -->
+    <div class="row">
+        <div class="offset-lg-4 col-lg-4 col-md-4">
+            <a (click)="addNewCategory()"><u>Add New Category?</u></a>
+        </div>
+    </div>
+    <br />
+    <div class="offset-lg-2 col-lg-6 col-md-6 text-right">
+        <button class="btn btn-outline-success" (click)="addQuestion()">Add</button> &nbsp; &nbsp;
+
+        <a class="btn btn-outline-danger" routerLink="/admin/questionList">Cancel</a>
+    </div>
+    <br /><br />
+</div>
+
+
+<!-- Adding a new Category-->
+<div *ngIf="categoryBlock" class="col-md-12 col-lg-12" style="margin-top: 5%;">
+    <h3 style="text-align: center;font-size: 40px;">Add Category</h3>
+    <br/>
+
+    <!-- Catgeory name-->
+    <div  class="row">
+        <label for="categoryName" class="col-lg-4 text-right font-weight-bold">
+            Category Name :
+        </label>
+        <div class="col-lg-4 col-md-4">
+            <input type="text" class="form-control" placeholder="categoryName" [(ngModel)]="categoryName" />
+
+            <!-- Validations for category name-->
+            <div *ngIf="categoryNameError">
+                <div class="text-danger">
+                    Category Name is required ..!
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="offset-lg-2 col-lg-6 col-md-6 text-right">
+        <button class="btn btn-outline-success" (click)="addCategory()">Add</button> &nbsp; &nbsp;
+        <a class="btn btn-outline-danger" (click)="cancel()">Cancel</a>
+    </div>
+</div>
+
+
+

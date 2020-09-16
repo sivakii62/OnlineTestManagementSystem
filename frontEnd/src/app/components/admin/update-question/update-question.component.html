@@ -1,0 +1,154 @@
+<div class="col-md-12 col-lg-12" style="margin-top: 5%;">
+    <h3 style="text-align: center;font-size: 40px;">Edit Question</h3>
+    <!-- <br/> -->
+    <!-- Reactive Forms -->
+   
+    <div class="row">
+        <label for="categoryName" class="col-lg-4 text-right font-weight-bold">
+            category :
+        </label>
+        <div class="col-lg-4 col-md-4">
+            <input type="text" disabled class="form-control" placeholder="categoryName"
+                [(ngModel)]="categoryName" />
+        </div>
+    </div>
+    <br />
+
+     <!-- Designing Edit Question Form -->
+    <form [formGroup]="editQueForm" >
+        <div class="form-group row">
+            <label for="questionId" class="col-lg-4 text-right font-weight-bold">
+                Question Id :
+            </label>
+
+            <div class="col-lg-4 col-md-4">
+                <input type="text" class="form-control" placeholder="Full Name"
+                    formControlName="questionId" />
+
+            </div>
+        </div>
+        <!-- questionAnswer Text Box -->
+        <!-- questionTitle Text Box -->
+        <div class="form-group row ">
+            <label for="questionTitle" class="col-lg-4 text-right font-weight-bold">
+                Question :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <!-- <input type="text" class="form-control " placeholder="questionTitle" formControlName="questionTitle" /> -->
+                <textarea type="text" class="form-control " placeholder="questionTitle"
+                    formControlName="questionTitle"></textarea>
+
+                <div *ngIf="submitted && editQueForm.controls.questionTitle.errors">
+                    <div class="text-danger" *ngIf="editQueForm.controls.questionTitle.errors.required">
+                        Question is required ..!
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of  questionTitle Text Box -->
+
+        <!-- Question answer-->
+        <div class="form-group row">
+            <label for="questionAnswer" class="col-lg-4 text-right font-weight-bold">
+                Answer :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="number" class="form-control" placeholder="questionAnswer"
+                    formControlName="questionAnswer" />
+                <!-- validations for question answer -->
+                <div *ngIf="submitted && editQueForm.controls.questionAnswer.errors">
+                    <div class="text-danger" *ngIf="editQueForm.controls.questionAnswer.errors.required">
+                        Answer is required ..!
+                    </div>
+                    <div class="text-danger"
+                        *ngIf="editQueForm.controls.questionAnswer.errors.min || editQueForm.controls.questionAnswer.errors.max">
+                        Option must be between 1 and 4 ..!
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- End of  questionAnswer Text Box -->
+
+        <!-- questionMarks Text Box -->
+        <div class="form-group row">
+            <label for="questionMarks" class="col-lg-4 text-right font-weight-bold">
+                Marks :
+            </label>
+            <div class="col-lg-4 col-md-4">
+                <input type="number" class="form-control" formControlName="questionMarks" />
+
+                <!-- validations for question marks-->
+                <div *ngIf="submitted && editQueForm.controls.questionMarks.errors">
+                    <div class="text-danger" *ngIf="editQueForm.controls.questionMarks.errors.required">
+                        Marks is required ..!
+                    </div>
+                    <div class="text-danger" *ngIf="editQueForm.controls.questionMarks.errors.min">
+                        Marks cant be negative..!
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </form>
+    <!-- end of updating question form-->
+    <br />
+
+    <!-- options for the particular question-->
+    <div *ngIf="options">
+
+    <!-- Option 1-->
+    <div class="row">
+        <label for="options[0]" class="col-lg-4 text-right font-weight-bold">
+            Option 1 :
+        </label>
+        <div class="col-lg-4 col-md-4">
+            <input type="text" class="form-control" placeholder="option 1" [(ngModel)]="options[0]" />
+        </div>
+    </div>
+    <br />
+      <!-- Option 2-->
+    <div class="row">
+        <label for="options[1]" class="col-lg-4 text-right font-weight-bold">
+            Option 2 :
+        </label>
+        <div class="col-lg-4 col-md-4">
+            <input type="text" class="form-control" placeholder="option 2" [(ngModel)]="options[1]" />
+        </div>
+    </div>
+    <br />
+      <!-- Option 3-->
+    <div class="row">
+        <label for="options[2]" class="col-lg-4 text-right font-weight-bold">
+            Option 3 :
+        </label>
+        <div class="col-lg-4 col-md-4">
+            <input type="text" class="form-control" placeholder="option 3" [(ngModel)]="options[2]" />
+        </div>
+    </div>
+    <br />
+      <!-- Option 4-->
+    <div class="row">
+        <label for="options[3]" class="col-lg-4 text-right font-weight-bold">
+            Option 4 :
+        </label>
+        <div class="col-lg-4 col-md-4">
+            <input type="text" class="form-control" placeholder="option 4" [(ngModel)]="options[3]" />
+            <div *ngIf="option">
+                <div class="text-danger">
+                    All options are required ..!
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br />
+    <div class="offset-lg-2 col-lg-6 col-md-6 text-right">
+        <button class="btn btn-outline-success" (click)="updateQuestion()">Update</button> &nbsp; &nbsp;
+
+        <a class="btn btn-outline-danger" routerLink="/admin/questionList">Cancel</a>
+    </div>
+    <br /><br />
+
+</div>

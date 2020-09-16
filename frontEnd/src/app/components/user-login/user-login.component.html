@@ -1,0 +1,55 @@
+<div class="container-fluid" id="grad1" style="background-image: url(assets/images/download.png)" class="text-white">
+    <br>
+        <div class="card-h-400" style="height:450px;width:500px;text-align: center;margin-top: 100px;margin-left: 600px;">
+    
+            <div class="container-fluid" style="padding: 0.5%;">
+                <h2>
+                    <i class="fa fa-user"
+                        style="font-size: 80px;color: black;"></i><br>
+                    <div class="text-center font-weight-bold" style="color:black">User Login</div>
+                </h2>
+            </div>
+    
+            <div class="jumbotron card1">
+                <div class="card-body">
+    
+                    <form [formGroup]="loginForm" (ngSubmit)="login()" style="border: 2;">
+                        <div class="form-group row">
+    
+                            <label for="username" class="col-lg-4 text-right font-weight-bold">Username:</label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" formControlName="username" placeholder="Your Username">
+                                <div *ngIf="submitted && loginForm.controls.username.errors">
+                                    <div class="text-danger" *ngIf="loginForm.controls.username.errors.required">
+                                        username is required.....
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="password" class="col-lg-4 text-right font-weight-bold">Password:</label>
+                            <div class="col-lg-8">
+                                <input type="password" class="form-control" formControlName="password"
+                                    placeholder="Your Password">
+                                <div *ngIf="submitted && loginForm.controls.password.errors">
+                                    <div class="text-danger" *ngIf="loginForm.controls.password.errors.required">
+                                        password is required.....
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-left: 40px;">
+    
+                            <button class="button button1">Login</button>
+                            &nbsp;&nbsp;
+    
+                            <button class="button button2" type="reset">Cancel</button>
+    
+                            <button class="button button3" (click)="home()" style="margin-left: 10px;">Back to Home</button>
+                        </div>
+                    </form>
+                    <button  style="color:antiquewhite ;background-color: transparent;border: none;margin-top: 10px;" (click)="forgot()">Forgot Password?</button>
+                </div>
+            </div>
+        </div>
+    </div>

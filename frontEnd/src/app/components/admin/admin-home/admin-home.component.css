@@ -1,0 +1,37 @@
+.center{
+    text-align: center;
+}
+.top-level{
+    flex-direction: column;
+    display: flex;
+    justify-content: space-evenly;
+    height: 500px;
+}
+
+.card-row{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* .table-row{
+    display: flex;
+    justify-content: space-evenly;    
+} */
+
+/* .graph-row{
+    display: flex;
+    justify-content: space-evenly;
+}
+.graph-format{
+    display: block;
+    background-color: white;
+    height: max-content;
+    margin-top: 3%;
+
+}
+
+.my-custom-scrollbar{
+    position: relative;
+    height: 250px;
+    overflow: auto;
+} */

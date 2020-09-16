@@ -1,0 +1,80 @@
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .button1 {
+    background-color: rgb(20, 121, 10); 
+    color: rgb(236, 231, 231); 
+   
+  }
+  
+  .button1:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(20, 121, 10);
+  }
+  
+  .button2 {
+    background-color: rgb(214, 4, 4); 
+    color: white; 
+   
+  }
+  
+  .button2:hover {
+    background-color: white;
+    color: black;
+    border:2px solid red;
+  }
+  
+  .button3 {
+    background-color: teal; 
+    color: black; 
+   
+  }
+  
+  .button3:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(167, 49, 118);
+  }
+  
+  #grad1 {
+    height: 800px;
+    background-size: cover;
+  }
+  .m1{
+   margin:100px,200px,650px,15px;
+ }
+ .button5:hover {background-color: green}
+
+ .card1 {
+ 
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 100%;
+  border-radius: 5px;
+  background-image: url(/assets/images/download.png);
+  background-size: cover;
+}
+
+.card1:hover {
+  box-shadow: 0 8px 20px 0 black;
+}
+.m2{
+  margin: 25px,40px,30px,40px;
+}
+
+.homeButton{
+    color: honeydew;
+    background-color: indigo;
+}

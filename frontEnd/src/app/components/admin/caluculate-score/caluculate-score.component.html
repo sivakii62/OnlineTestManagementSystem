@@ -1,0 +1,25 @@
+
+
+<table class="table table-striped table-responsive table-hover" style="margin-top: 100px; margin-left: 300px;">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Test Title</th>
+            <th>Action </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cr of user_Test">
+            <td>{{cr.userId.userName}}</td>
+            <td >{{cr.testId.testTitle}}</td>
+            <td><button class="btn btn-info" (click)="declare(cr.user_Test_Id)">Declare</button></td>
+        </tr>
+        <tr>
+            <td *ngIf="user_Test.length==0 && check" colspan="10">
+                <h5 class="text-center text-danger">
+                Sorry, No Tests ..!</h5>
+            </td>
+        </tr>
+    </tbody>
+    <br /><br />
+</table>

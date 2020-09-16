@@ -1,0 +1,114 @@
+
+insert into user_tab values(1,'srk@gmail.com',0,0,'srk','srk');
+insert into user_tab values(2,'harsha@gmail.com',0,0,'harsha','harsha');
+insert into user_tab values(3,'waseem@gmail.com',0,0,'waseem','waseem');
+
+
+
+
+insert into category_tab values(1,'Java');
+insert into category_tab values(2,'Angular');
+insert into category_tab values(3,'Spring');
+insert into category_tab values(4,'Aptitude');
+insert into category_tab values(5,'Technical');
+insert into category_tab values(6,'Verbal');
+insert into category_tab values(7,'C');
+insert into category_tab values(8,'CPP');
+
+
+
+
+insert into test_tab values(1,'15-SEP-20 12.33.00.000000 PM','02-SEP-20 12.33.00.000000 PM',10,0,'L1 - Exam',10,10);
+insert into test_tab values(2,'15-SEP-20 12.33.00.000000 PM','02-SEP-20 12.33.00.000000 PM',10,0,'Aptitude Test',10,10);
+
+
+
+insert into questions_tab values(1,4,4,'Which of these is an incorrect array declaration?',1,1);
+insert into questions_tab values(2,1,2,'Which of these is an incorrect Statement?',1,1);
+insert into questions_tab values(3,3,1,'Which of these operators is used to allocate memory to array variable in Java?',1,1);
+insert into questions_tab values(4,1,4,'Which of these is necessary to specify at time of array initialization?',1,1);
+insert into questions_tab values(5,1,2,'What does HTML stand for?',2,1);
+insert into questions_tab values(6,3,1,'The body tag is usually used after?',2,1);
+insert into questions_tab values(7,1,4,'What does CSS stand for?',2,1);
+insert into questions_tab values(8,1,2,'If we want define style for an unique element, then which css selector will we use ?',2,1);
+insert into questions_tab values(9,1,1,'What is spring?',3,1);
+insert into questions_tab values(10,4,4,'Which is the way to provide configuration metadata to spring?',3,1);
+
+
+
+
+insert into options values(1,'int arr[] = new int[5]');
+insert into options values(1,'int [] arr = new int[5]');
+insert into options values(1,'int arr[] = new int[5]');
+insert into options values(1,'int arr[] = int [5] new');
+
+insert into options values(2,'It is necessary to use new operator to initialize an array');
+insert into options values(2,' Array can be initialized using comma separated expressions surrounded by curly braces');
+insert into options values(2,'Array can be initialized when they are declared');
+insert into options values(2,'None of the mentioned');
+
+insert into options values(3,'malloc');
+insert into options values(3,'alloc');
+insert into options values(3,'new');
+insert into options values(3,'new malloc');
+
+insert into options values(4,'row');
+insert into options values(4,'column');
+insert into options values(4,'both row and column');
+insert into options values(4,'none of the mentioned');
+
+insert into options values(5,'Hyper text markup language');
+insert into options values(5,'Hyperlinks and text markup language');
+insert into options values(5,'Hyperloop text markup language');
+insert into options values(5,'Hypertool text markup language');
+
+insert into options values(6,'EM Tag');
+insert into options values(6,'TITLE Tag');
+insert into options values(6,'HEAD Tag');
+insert into options values(6,'HTML Tag');
+
+insert into options values(7,'Cascading Style Sheets');
+insert into options values(7,'Creative Style Sheets');
+insert into options values(7,'Colourful Style Sheets');
+insert into options values(7,'Computer Style Sheets');
+
+insert into options values(8,'id');
+insert into options values(8,'text');
+insert into options values(8,'class');
+insert into options values(8,'name');
+
+insert into options values(9,'Spring is an open source development framework for enterprise Java');
+insert into options values(9,'Spring is a proprietary framework');
+insert into options values(9,'Spring is a development framework for .Net applications');
+insert into options values(9,'Spring is a development framework for PHP based applications');
+
+insert into options values(10,'XML Based configuration file');
+insert into options values(10,'Annotation based configuration';
+insert into options values(10,'Java based configuration');
+insert into options values(10,'All of the above');
+
+
+
+
+
+insert into user_test_tab values(1,0,0,0,0,1,1);
+insert into user_test_tab values(2,1,0,0,10,1,2);
+
+
+insert into list_of_answers values(2,1);
+insert into list_of_answers values(2,2);
+insert into list_of_answers values(2,1);
+insert into list_of_answers values(2,2);
+insert into list_of_answers values(2,1);
+insert into list_of_answers values(2,3);
+insert into list_of_answers values(2,1);
+insert into list_of_answers values(2,1);
+insert into list_of_answers values(2,2);
+insert into list_of_answers values(2,4);
+
+
+
+
+
+commit;
+

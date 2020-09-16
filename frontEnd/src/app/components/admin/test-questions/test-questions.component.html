@@ -1,0 +1,178 @@
+<!-- <div>
+    <div class="offset-lg-2 col-lg-10 col-md-10">
+        <p>All Questions</p>
+            <table class="table table-striped table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Question</th>
+                        <th>Marks</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let que of allQues | slice:limit1:limit2">
+                        <td>{{que.questionId}}</td>
+                        <td>{{que.questionTitle}}</td>
+                        <td>{{que.questionMarks}}</td>
+                        <td>{{que.questionCategory.name}}</td>
+                        <td>
+                            <button class="btn btn-outline-danger" type="button"
+                                (click)="addQuestionToTest(que.questionId)">Add</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <br /><br />
+            </table>
+    </div>
+</div>
+<div>
+    <div class="offset-lg-2 col-lg-10 col-md-10">
+        <p>Test Questions</p>
+            <table class="table table-striped table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Question</th>
+                        <th>Marks</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let que of testQues | slice:limit1:limit2">
+                        <td>{{que.questionId}}</td>
+                        <td>{{que.questionTitle}}</td>
+                        <td>{{que.questionMarks}}</td>
+                        <td>{{que.questionCategory.name}}</td>
+                        <td>
+                            <button class="btn btn-outline-danger" type="button"
+                                (click)="deleteQuestionFromTest(que.questionId)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <br /><br />
+            </table>
+    </div>
+</div> -->
+
+<br/><br/>
+
+
+<!-- displaying all the questions-->
+<div class="col-lg-12-col-md-12">
+    <div class="row">
+        <div class="offset-lg-4 col-lg-6 col-md-6">
+            <h3>Title : {{test?.testTitle}}</h3>
+            <h3>Total Questions : {{test?.totalQuestion}}</h3>
+            <h3>Total Marks : {{test?.testTotalMarks}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div>
+                <div class="col-lg-11 col-md-11">
+                    <h2>All Questions</h2>
+                
+                        <!-- table for displaying all the test questions-->
+                        <table class="table table-striped table-responsive table-hover">
+                            <thead>
+                               <tr>
+                                    <th>Id</th>
+                                    <th>Question</th>
+                                    <th>Marks</th>
+                                    <th>Category</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <!-- looping through all the questions and displaying them-->
+                                <tr *ngFor="let que of allQues">
+                                 
+                                    <td>{{que.questionId}}</td>
+                                    <td>{{que.questionTitle}}</td>
+                                    <td>{{que.questionMarks}}</td>
+                                    <td>{{que.questionCategory.name}}</td>
+                                    <td>
+                                        <button class="btn btn-outline-danger" type="button"
+                                            (click)="addQuestionToTest(que.questionId)">Add</button>
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                                    <td *ngIf="ques.length==0" colspan="7">
+                                        <h5 class="text-center text-danger">
+                                            Sorry, User does not exist ..!</h5>
+                                    </td>
+                                </tr> -->
+                            </tbody>
+                            <br /><br />
+                            <!-- <button *ngIf="limit2<count" style="float: left;margin-left: 60px;" (click)=old()
+                                class="btn btn-info">Previous</button>
+                            <button *ngIf="limit1>0" style="float: right;margin-right: 600px;" (click)=new()
+                                class="btn btn-info">Next</button> -->
+                        </table>
+                    <!-- </ng-container> -->
+                </div>
+            </div>
+             
+        </div>
+
+
+
+        <!-- displaying the test questions-->
+        <div class="col-lg-6 col-md-6">
+            <div>
+                <div class="offset-lg-1 col-lg-11 col-md-11">
+                    <h2>Test Questions</h2>
+                    <!-- <ng-container *ngIf="(users | search:searchText) as result"> -->
+                        <table class="table table-striped table-responsive table-hover">
+                            <thead>
+                                <tr>
+                                    <!-- <th class="text-hide">Id</th> -->
+                                    <th>Id</th>
+                                    <th>Question</th>
+                                    <th>Marks</th>
+                                    <th>Category</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- looping through added test questions and displaying them-->
+                                <tr *ngFor="let que of testQues">
+                                    <!-- <td class="text-hide">{{user.id}}</td> -->
+                                    <td>{{que.questionId}}</td>
+                                    <td>{{que.questionTitle}}</td>
+                                    <td>{{que.questionMarks}}</td>
+                                    <td>{{que.questionCategory.name}}</td>
+                                    <td>
+                                        <button class="btn btn-outline-danger" type="button"
+                                            (click)="deleteQuestionFromTest(que.questionId)">Delete</button>
+                                    </td>
+                                </tr>
+                                <!-- <tr>
+                                    <td *ngIf="ques.length==0" colspan="7">
+                                        <h5 class="text-center text-danger">
+                                            Sorry, User does not exist ..!</h5>
+                                    </td>
+                                </tr> -->
+                            </tbody>
+                            <br /><br />
+                            <!-- <button *ngIf="limit2<count" style="float: left;margin-left: 60px;" (click)=old()
+                                class="btn btn-info">Previous</button>
+                            <button *ngIf="limit1>0" style="float: right;margin-right: 600px;" (click)=new()
+                                class="btn btn-info">Next</button> -->
+                        </table>
+                    <!-- </ng-container> -->
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+

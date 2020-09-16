@@ -1,0 +1,29 @@
+
+<input type="number" placeholder="*Enter the User Id" [(ngModel)]="test"><br>
+
+
+<table style="margin-left:50px" class="table table-hover table-striped">
+  
+    <thead>
+      <tr>
+          <th>
+              Id
+          </th>
+        <th> 
+            User
+        </th>
+        <th> 
+            Email
+        </th>
+       
+      </tr>
+    </thead>
+    
+    <tbody>
+        <tr *ngFor="let que of users ">
+            <td>{{que.userId}}</td>
+            <td>{{que.userName}}</td>
+            <td>{{que.emailId}}</td>
+        </tr>
+    </tbody>
+  </table>
