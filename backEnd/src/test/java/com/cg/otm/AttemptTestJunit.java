@@ -26,8 +26,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.cg.otm.controller.AttemptTestController;
 import com.cg.otm.exceptions.DataMismatchExcpetion;
 import com.cg.otm.exceptions.NoDataFoundedException;
+import com.cg.otm.model.QuestionsWithJwt;
 import com.cg.otm.service.AttemptTestServiceImpl;
-
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -150,7 +150,7 @@ public class AttemptTestJunit {
 	@DisplayName("Testing of getAllQuestion")
 	void getAllQuestionTEST() throws Exception {
 		logger.info("Validation of Get All Question of peticular test");
-		List<com.cg.otm.entities.Question> question = null;
+		QuestionsWithJwt question = null;
 		
 		//--------------------- TEST CASE 1 -----------------------------//
 		/*
@@ -168,9 +168,8 @@ public class AttemptTestJunit {
 		 * In this test case we are passing a valid test id then
 		 * that function returns test List we are checking number of questions in that test.
 		 */
-//	    	question = attemptTestService.getAllQuestion("srk", 1);
-		    assertEquals(10, question.size());
-		
+	    	question = attemptTestService.getAllQuestion("srk", 1);
+		    assertEquals(10, question.getQuestions().size());
 			
 	}
 	
