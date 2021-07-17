@@ -22,7 +22,7 @@ export class RegisterTestComponent implements OnInit {
       this.testDetails = this.testDetails.filter(t => (t.testStatus != -1));
   },
   (err)=>{
-   // swal("No Test is available!");
+   // alert("No Test is available!");
     this.userService.hide();
   })
    }
@@ -45,29 +45,29 @@ export class RegisterTestComponent implements OnInit {
     console.log(test);
     let startdate = this.datepipe.transform(test.startDate, 'dd-MM-yyyy HH:mm:ss');
     let enddate = this.datepipe.transform(test.endDate, 'dd-MM-yyyy HH:mm:ss');
-   // swal(test.testTitle, "Test Start Date: " + startdate + "\nTest End Date: " + enddate
+   // alert(test.testTitle, "Test Start Date: " + startdate + "\nTest End Date: " + enddate
     // + "\nTotal Question: "+ test.totalQuestion + "\nTotal Marks: "+ test.testTotalMarks + "\nTest Duration(min): "
      //+  test.testDuration + "\nTest Status: " + this.checkStatus(test.testStatus));
   }
   FeedbackTest(test: any){
     let u=localStorage.token
     this.isActive = false;
-    // swal(this.auth.getUserid() + ": userId and testID: " + test.test_Id);
+    // alert(this.auth.getUserid() + ": userId and testID: " + test.test_Id);
     this.userService.getRegisterInTest(u, test.test_Id).subscribe((data)=>{
       this.isActive = true;
       this.testDetails = this.testDetails.filter(t=>(t.test_Id != test.test_Id));
-      //swal("Registered SuccessFully!", "check the Details very carefully..", "success");
+      //alert("Registered SuccessFully!", "check the Details very carefully..", "success");
   },
   (err)=>{
     console.log(err);
     if(err.error.text == "User Founded... and Test Assigned"){
-     // swal("Registered SuccessFully!", "check the Details very carefully..", "success");
+     // alert("Registered SuccessFully!", "check the Details very carefully..", "success");
       this.isActive = true;
       this.userService.hide();
       return;
     }
     console.log(err.error.text);
-    //swal("You have already Register in this test", "Problem occured!", "info")
+    //alert("You have already Register in this test", "Problem occured!", "info")
     this.isActive = true;
     this.userService.hide();
   })

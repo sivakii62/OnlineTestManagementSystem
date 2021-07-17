@@ -23,8 +23,6 @@
     "ngx-countdown": "^10.0.1",
     "rxjs": "~6.5.4",
     "rxjs-compat": "^6.6.3",
-    "sweetalert": "^2.1.2",
-    "sweetalert2": "^10.0.2",
     "tslib": "^1.13.0",
     "zone.js": "~0.10.2"
   },

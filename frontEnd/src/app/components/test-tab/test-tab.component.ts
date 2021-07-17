@@ -3,7 +3,6 @@ import { Component, HostListener, Inject, Injector, OnInit } from '@angular/core
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AttemptExamService } from 'src/app/services/attempt-exam.service';
-import swal from 'sweetalert';
 import {CountdownModule,CountdownComponent} from 'ngx-countdown';
 import { Test } from 'src/app/models/user.model';
 import { parseJwt } from 'src/app/models/customFunctions';
@@ -159,28 +158,6 @@ visitQuestion(num: number){
 }
 
 startTimer(){
-  // this.interval = setInterval(()=>{
-   
-  //    if(this.timeLeftSecond > 0){
-  //     this.timeLeftSecond--;
-  //    }
-  //    else{
-  //     this.timeLeftMin--;
-  //     this.timeLeftSecond = 60;
-  //     if(this.timeLeftMin == 1){
-  //       if(this.step == 3){
-  //         swal("Last 2 Minute Left... Complete Fast.");
-  //       }
-  //       this.timeOutAlert = true;
-  //      }
-  //     if(this.timeLeftMin == -1){
-  //       if(this.step==3)
-  //         this.submitTestAnswersTimeOut();
-  //       else
-  //         window.close
-  //     }
-  //   }
-  // },1000)
 
 
   this.timeLeftForAlert = this.test.testDuration 
@@ -214,7 +191,7 @@ startTimer(){
 
 clearOption(){
   if(this.answer[this.currentQuestion] == 0){
-    swal("Not attempted ...!");
+    alert("Not attempted ...!");
     this.SelectOption.controls['option'].reset();
     return;
   }
@@ -228,7 +205,7 @@ setChooseOption(){
     this.totalAttempts--;
   }
   if(this.SelectOption.controls.option.invalid){
-    swal("No Option Selected ...!");
+    alert("No Option Selected ...!");
     this.answer[this.currentQuestion] = 0;
     this.answerStatus[this.currentQuestion] = -1;
     return;
@@ -282,7 +259,7 @@ submitTestAnswer(){
  },
  (err)=>{
    console.log(err);
-   swal(err.error.message);
+   alert(err.error.message);
  })
  this.step=4
 
@@ -306,9 +283,9 @@ submitTestAnswersTimeOut(){
  },
  (err)=>{
    console.log(err);
-   swal(err.error.message);
+   alert(err.error.message);
  })
- swal("Time Out!!! \nTest Is Submitted...");
+ alert("Time Out!!! \nTest Is Submitted...");
  this.step=4
 
 //  localStorage.removeItem('token')
@@ -319,20 +296,8 @@ submitTestAnswersTimeOut(){
 }
 
 Review(){
-  console.log(this.answer)
-  swal({
-    title: "Are you sure Want to Submit?",
-    text: "Total Attempted: " + this.totalAttempts + " out of " + (this.test.totalQuestion)+" questions.",
-    icon: "warning",
-    buttons: [true, true],
-    dangerMode: true,
-  })
-  .then((willDelete) => {
-    if (willDelete) { this.submitTestAnswer() }
-    else{ return }
-  }
-  )
+  console.log(this.answer);
+  confirm("Are you sure do you need to submit the answer ??") ? this.submitTestAnswer() : "";
 }
-
 
 }

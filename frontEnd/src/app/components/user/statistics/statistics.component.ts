@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
-import swal from 'sweetalert';
 
 @Component({
   selector: 'app-statistics',
@@ -37,7 +36,7 @@ export class StatisticsComponent implements OnInit {
      },
      (err)=>{
        console.log(err);
-           swal(err.error.details);
+           alert(err.error.details);
           userService.hide(); 
      })
   
@@ -46,7 +45,7 @@ export class StatisticsComponent implements OnInit {
     this.allTest  = data;
 },
 (err)=>{
-   swal(err.error.details);
+   alert(err.error.details);
 })
 }
   ngOnInit() {
